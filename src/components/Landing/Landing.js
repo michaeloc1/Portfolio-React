@@ -14,6 +14,7 @@ import {
     FaGithub,
     FaYoutube,
     FaBlogger,
+    FaStackOverflow
 } from 'react-icons/fa';
 
 function Landing() {
@@ -103,11 +104,11 @@ function Landing() {
                         )}
                         {socialsData.twitter && (
                             <a
-                                href={socialsData.twitter}
+                                href={socialsData.stackOverflow}
                                 target='_blank'
                                 rel='noreferrer'
                             >
-                                <FaTwitter
+                                <FaStackOverflow
                                     className='landing--social'
                                     style={{ color: theme.secondary }}
                                     aria-label='Twitter'
