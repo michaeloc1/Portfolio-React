@@ -334,3 +334,9 @@
             transform: translateX(80px);
         }
   }
+
+  #email-message  {
+    font-size: 20px;
+    padding: 20px;
+    color: 'red'
+  }

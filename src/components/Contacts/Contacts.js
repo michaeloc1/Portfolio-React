@@ -1,9 +1,10 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useRef } from 'react';
 import { Snackbar, IconButton, SnackbarContent } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 import axios from 'axios';
 import isEmail from 'validator/lib/isEmail';
 import { makeStyles } from '@material-ui/core/styles';
+import emailjs from '@emailjs/browser';
 import {
     FaTwitter,
     FaLinkedinIn,
@@ -160,6 +161,28 @@ function Contacts() {
         }
     };
 
+    const form = useRef();
+    const [emailMessage, setEmailMessage] = useState('');
+
+          const sendEmail = (e) => {
+          e.preventDefault(); // prevents the page from reloading when you hit “Send”
+        
+          emailjs.sendForm('service_on797w2', 'template_64zv4tc', form.current, 'u-PvSKZdrqcXYwegC')
+            .then((result) => {
+                setEmailMessage('Email was sent')
+                setName('');
+                setEmail('');
+                setMessage('');
+                setOpen(false);
+            }, (error) => {
+                setEmailMessage('Failed to send email')
+                setName('');
+                setEmail('');
+                setMessage('');
+                setOpen(false);
+            });
+        };
+
     return (
         <div
             className='contacts'
@@ -170,7 +193,8 @@ function Contacts() {
                 <h1 style={{ color: theme.primary }}>Contacts</h1>
                 <div className='contacts-body'>
                     <div className='contacts-form'>
-                        <form onSubmit={handleContactForm}>
+                        
+                        <form ref={form} onSubmit={sendEmail}>
                             <div className='input-container'>
                                 <label htmlFor='Name' className={classes.label}>
                                     Name
@@ -180,7 +204,7 @@ function Contacts() {
                                     value={name}
                                     onChange={(e) => setName(e.target.value)}
                                     type='text'
-                                    name='Name'
+                                    name='from_name'
                                     className={`form-input ${classes.input}`}
                                 />
                             </div>
@@ -196,7 +220,7 @@ function Contacts() {
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
                                     type='email'
-                                    name='Email'
+                                    name='reply_to'
                                     className={`form-input ${classes.input}`}
                                 />
                             </div>
@@ -212,7 +236,7 @@ function Contacts() {
                                     value={message}
                                     onChange={(e) => setMessage(e.target.value)}
                                     type='text'
-                                    name='Message'
+                                    name='message'
                                     className={`form-message ${classes.message}`}
                                 />
                             </div>
@@ -246,6 +270,7 @@ function Contacts() {
                                         />
                                     </div>
                                 </button>
+                                <p id="email-message">{emailMessage}</p>
                             </div>
                         </form>
                         <Snackbar
@@ -437,3 +462,4 @@ function Contacts() {
 }
 
 export default Contacts;
+
