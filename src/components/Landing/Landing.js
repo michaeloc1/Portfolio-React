@@ -9,7 +9,7 @@ import { headerData } from '../../data/headerData';
 import { socialsData } from '../../data/socialsData';
 
 import {
-    FaTwitter,
+    //FaTwitter,
     FaLinkedin,
     FaGithub,
     FaYoutube,

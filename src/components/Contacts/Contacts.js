@@ -2,24 +2,23 @@
 import React, { useContext, useState, useRef } from 'react';
 import { Snackbar, IconButton, SnackbarContent } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
-import axios from 'axios';
-import isEmail from 'validator/lib/isEmail';
+//import axios from 'axios';
+//import isEmail from 'validator/lib/isEmail';
 import { makeStyles } from '@material-ui/core/styles';
 import emailjs from '@emailjs/browser';
 import {
-    FaTwitter,
+   // FaTwitter,
     FaLinkedinIn,
     FaGithub,
     FaYoutube,
     FaBloggerB,
-    FaRedditAlien,
+  //  FaRedditAlien,
     FaStackOverflow,
-    FaCodepen,
-    FaInstagram,
-    FaGitlab,
-    FaMediumM,
+   // FaCodepen,
+   // FaInstagram,
+   // FaGitlab,
+  //  FaMediumM,
 } from 'react-icons/fa';
-import { AiOutlineSend, AiOutlineCheckCircle } from 'react-icons/ai';
 import { FiPhone, FiAtSign } from 'react-icons/fi';
 import { HiOutlineLocationMarker } from 'react-icons/hi';
 
@@ -36,8 +35,8 @@ function Contacts() {
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
 
-    const [success, setSuccess] = useState(false);
-    const [errMsg, setErrMsg] = useState('');
+    //const [success, setSuccess] = useState(false);
+   // const [errMsg, setErrMsg] = useState('');
 
     const { theme } = useContext(ThemeContext);
 
@@ -131,36 +130,36 @@ function Contacts() {
 
     const classes = useStyles();
 
-    const handleContactForm = (e) => {
-        e.preventDefault();
+    // const handleContactForm = (e) => {
+    //     e.preventDefault();
 
-        if (name && email && message) {
-            if (isEmail(email)) {
-                const responseData = {
-                    name: name,
-                    email: email,
-                    message: message,
-                };
+    //     if (name && email && message) {
+    //         if (isEmail(email)) {
+    //             const responseData = {
+    //                 name: name,
+    //                 email: email,
+    //                 message: message,
+    //             };
 
-                axios.post(contactsData.sheetAPI, responseData).then((res) => {
-                    console.log('success');
-                    setSuccess(true);
-                    setErrMsg('');
+    //             axios.post(contactsData.sheetAPI, responseData).then((res) => {
+    //                 console.log('success');
+    //                 setSuccess(true);
+    //                 setErrMsg('');
 
-                    setName('');
-                    setEmail('');
-                    setMessage('');
-                    setOpen(false);
-                });
-            } else {
-                setErrMsg('Invalid email');
-                setOpen(true);
-            }
-        } else {
-            setErrMsg('Enter all the fields');
-            setOpen(true);
-        }
-    };
+    //                 setName('');
+    //                 setEmail('');
+    //                 setMessage('');
+    //                 setOpen(false);
+    //             });
+    //         } else {
+    //             setErrMsg('Invalid email');
+    //             setOpen(true);
+    //         }
+    //     } else {
+    //         setErrMsg('Enter all the fields');
+    //         setOpen(true);
+    //     }
+    // };
 
     const form = useRef();
     const [emailMessage, setEmailMessage] = useState('');
@@ -247,8 +246,8 @@ function Contacts() {
                                     type='submit'
                                     className={classes.submitBtn}
                                 >
-                                    <p>{!success ? 'Send' : 'Sent'}</p>
-                                    <div className='submit-icon'>
+                                    {/* <p>{!success ? 'Send' : 'Sent'}</p> */}
+                                    {/* <div className='submit-icon'>
                                         <AiOutlineSend
                                             className='send-icon'
                                             style={{
@@ -269,7 +268,7 @@ function Contacts() {
                                                 opacity: !success ? '0' : '1',
                                             }}
                                         />
-                                    </div>
+                                    </div> */}
                                 </button>
                                 <p id="email-message">{emailMessage}</p>
                             </div>
@@ -301,7 +300,7 @@ function Contacts() {
                                     color: theme.secondary,
                                     fontFamily: 'var(--primaryFont)',
                                 }}
-                                message={errMsg}
+                                //message={errMsg}
                             />
                         </Snackbar>
                     </div>
