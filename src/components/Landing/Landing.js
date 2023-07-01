@@ -173,11 +173,11 @@ function Landing() {
                                     rel='noreferrer'
                                 >
                                     <Button className={classes.resumeBtn}>
-                                        Download CV
+                                        Resume
                                     </Button>
                                 </a>
                             )}
-                            <NavLink
+                             <NavLink
                                 to='/#contacts'
                                 smooth={true}
                                 spy='true'
