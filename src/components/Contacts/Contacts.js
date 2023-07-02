@@ -244,7 +244,9 @@ function Contacts() {
                             <div className='submit-btn'>
                                 <button
                                     type='submit'
-                                    className={classes.submitBtn}
+                                    className={classes.submitBtn} id="email-btn"
+                                     
+
                                 >
                                     {/* <p>{!success ? 'Send' : 'Sent'}</p> */}
                                     {/* <div className='submit-icon'>
@@ -267,8 +269,9 @@ function Contacts() {
                                                     : 'inline-flex',
                                                 opacity: !success ? '0' : '1',
                                             }}
-                                        />
+                                        
                                     </div> */}
+                                    Submit
                                 </button>
                                 <p id="email-message">{emailMessage}</p>
                             </div>

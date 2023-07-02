@@ -338,5 +338,10 @@
   #email-message  {
     font-size: 20px;
     padding: 20px;
-    color: 'red'
+    color: 'red';
+  }
+
+  #email-btn {
+    color: white;
+    font-size: 20px;
   }
